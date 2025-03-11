@@ -1,5 +1,5 @@
 ## CEN4010
-Student: Brianna Talley B5956677
+Student: Brianna Talley
 Feature: Book Details
 
 ## Technology Stack
