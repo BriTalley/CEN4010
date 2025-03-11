@@ -2,10 +2,10 @@
 Student: Brianna Talley B5956677
 Feature: Book Details
 
-## Project is created with
-* Django
-* Python/Pymango
-* MongoDB
+## Technology Stack
+* Backend Framework: Django
+* Database: MongoDB
+* Programming Language: Python
 
 ## Run 
 * [python manage.py runserver]
