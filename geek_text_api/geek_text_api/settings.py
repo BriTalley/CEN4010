@@ -67,7 +67,7 @@ MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://your_username:your_password@yo
 MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "geek_text")
 
 client = MongoClient(MONGO_URI)
-DATABASE = client[MONGO_DB_NAME]  # Use this in views.py
+DATABASE = client[MONGO_DB_NAME]  
 
 # Password Validation
 AUTH_PASSWORD_VALIDATORS = [

@@ -14,7 +14,7 @@ def create_book(request):
         try:
             data = json.loads(request.body)
 
-            required_fields = ["isbn", "name", "description", "price", "author_id", "genre", "publisher", "year_published", "copies_sold"]
+            required_fields = ["isbn", "title", "description", "price", "author","author_id", "genre", "publisher", "published_year", "rating"]
             for field in required_fields:
                 if field not in data:
                     return JsonResponse({"error": f"Missing field: {field}"}, status=400)
@@ -38,7 +38,7 @@ def create_author(request):
         try:
             data = json.loads(request.body)
 
-            required_fields = ["first_name", "last_name", "biography", "publisher"]
+            required_fields = ["first_name", "last_name", "biography", "publisher", "author_id"]
             for field in required_fields:
                 if field not in data:
                     return JsonResponse({"error": f"Missing field: {field}"}, status=400)
