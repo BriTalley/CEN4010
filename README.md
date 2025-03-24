@@ -1,5 +1,5 @@
 ## CEN4010
-Student: Brianna Talley B5956677
+Student: Brianna Talley 
 Feature: Book Details
 
 ## Project is created with
@@ -8,4 +8,7 @@ Feature: Book Details
 * MongoDB
 
 ## Run 
-* [python manage.py runserver]
+```
+python manage.py runserver 
+
+```
