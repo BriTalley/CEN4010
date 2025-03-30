@@ -1,3 +1,4 @@
+book_reviews
 # CEN4010
  ## Book Reviews and Commenting API
 
@@ -18,7 +19,7 @@ Example JSON:
   "comment": "Solid read with great pacing."
 }
 
----
+
 
 ### GET /reviews/<book_id>/
 Returns all reviews for a specific book ID.
@@ -35,6 +36,7 @@ Expected Response:
     "rating": 4,
     "comment": "Solid read with great pacing.",
     "created_at": "2025-03-24T23:59:49.789Z"
-  }
-]
+ 
 
+CEN 4010 - Group 10
+main

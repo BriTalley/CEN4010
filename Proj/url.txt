@@ -1,0 +1,7 @@
+mongodb+srv://Mattv:MV7878@bookstore-group10.uma1s.mongodb.net/
+
+http://127.0.0.1:8000/api/genre-books/?genre=Networking
+http://127.0.0.1:8000/api/all-books/
+
+http://127.0.0.1:8000/api/rating-books/?rating=4.4
+http://127.0.0.1:8000/api/top-ten-books/
