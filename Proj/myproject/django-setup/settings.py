@@ -10,13 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env_file = BASE_DIR / ".env"
+load_dotenv(dotenv_path=env_file)
 
-MONGODB_CONNECTION_STRING = "mongodb+srv://Mattv:MV7878@bookstore-group10.uma1s.mongodb.net/"
-MONGODB_DB_NAME = "geek_text"
+MONGODB_CONNECTION_STRING = os.getenv("MONGODB_CONNECTION_STRING1")
+MONGODB_DB_NAME = os.getenv("MONGODB_DB_NAME1")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
