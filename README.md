@@ -1,4 +1,5 @@
-Thomas Vonseggern - CEN4010
+
+Thomas Vonseggern - CEN4010 -
 
 Wish List Management
 
@@ -41,3 +42,5 @@ o HTTP Request Type: GET
 o Parameters Sent: Wishlist Id
 
 o Response Data: JSON LIST of books in the user’s wishlist.
+=======
+CEN 4010 - Group 10
