@@ -40,3 +40,55 @@ Expected Response:
 
 CEN 4010 - Group 10
 main
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+from .models import Review
+
+@csrf_exempt
+def update_review(request, review_id):
+    if request.method == "PUT":
+        try:
+            data = json.loads(request.body)
+            review = Review.objects.get(id=review_id)
+
+            review.rating = data.get("rating", review.rating)
+            review.comment = data.get("comment", review.comment)
+            review.save()
+
+            return JsonResponse({"message": "Review updated!"})
+        except Review.DoesNotExist:
+            return JsonResponse({"error": "Review not found"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request"}, status=400)
+
+
+@csrf_exempt
+def delete_review(request, review_id):
+    if request.method == "DELETE":
+        try:
+            review = Review.objects.get(id=review_id)
+            review.delete()
+            return JsonResponse({"message": "Review deleted!"})
+        except Review.DoesNotExist:
+            return JsonResponse({"error": "Review not found"}, status=404)
+    return JsonResponse({"error": "Invalid request"}, status=400)
+### PUT /reviews/update/<review_id>/
+Updates a review’s rating or comment using the review ID.
+
+Example JSON body:
+{
+  "rating": 5,
+  "comment": "Updated comment text here."
+}
+
+---
+
+### DELETE /reviews/delete/<review_id>/
+Deletes a review by its review ID.
+
+Expected Response:
+{
+  "message": "Review deleted!"
+}
