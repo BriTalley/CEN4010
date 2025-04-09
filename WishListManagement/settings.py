@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(27=l&nruyp-k#69rl($$**=*+@d9+6ti(ujq=arx%xl79^q_%'
+SECRET_KEY =
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'geek_text',
         'CLIENT': {
-            'host': 'mongodb+srv://tvons001:aP8J2xRZvGPsUpEM@bookstore-group10.uma1s.mongodb.net/',
+            'host':
         }
     }
 }
