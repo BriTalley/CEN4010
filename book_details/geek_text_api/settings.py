@@ -63,8 +63,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'geek_text_api.wsgi.application'
 
 # MongoDB Connection
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://your_username:your_password@your_cluster.mongodb.net/?retryWrites=true&w=majority")
-MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "geek_text")
+MONGO_URI = os.getenv("MONGO_URI")
+MONGO_DB_NAME = os.getenv("MONGO_DB_NAME")
 
 client = MongoClient(MONGO_URI)
 DATABASE = client[MONGO_DB_NAME]  
