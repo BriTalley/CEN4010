@@ -7,6 +7,7 @@ import json
 from django.http import JsonResponse
 from django.conf import settings
 from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 from pymongo import MongoClient
 from bson import json_util
 
@@ -88,3 +89,42 @@ def all_books(request):
     books_json = json.loads(json_util.dumps(books_list))
     
     return JsonResponse(books_json, safe=False)
+
+@csrf_exempt
+@require_http_methods(["PUT"])
+def apply_discount_to_author(request):
+
+    try:
+        payload = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON payload'}, status=400)
+    
+    author = payload.get('author')
+    discount = payload.get('discount')
+    
+    if not author:
+        return JsonResponse({'error': 'Author is required'}, status=400)
+    if discount is None:
+        return JsonResponse({'error': 'Discount value is required'}, status=400)
+    
+    try:
+        discount = float(discount)
+    except ValueError:
+        return JsonResponse({'error': 'Discount must be a number'}, status=400)
+    
+    if discount < 0 or discount > 100:
+        return JsonResponse({'error': 'Discount must be between 0 and 100'}, status=400)
+    
+    discount_factor = 1 - (discount / 100.0)
+    
+    # Update all books with the specified author that have a 'price' field.
+    result = books_collection.update_many(
+        {'author': author, 'price': {'$exists': True}},
+        {'$mul': {'price': discount_factor}}
+    )
+    
+    return JsonResponse({
+        'message': f'Discount of {discount}% applied to books by {author}.',
+        'matched_count': result.matched_count,
+        'modified_count': result.modified_count
+    })
